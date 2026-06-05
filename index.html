@@ -36,7 +36,6 @@
   .state-notes strong { color: #2A2A2A; }
   .mockup { padding-left: 38px; }
 
-  /* BO replicated styles */
   .bo-wrapper { background: #F5F1E8; padding: 22px; border-radius: 6px; }
   .bo-block { background: #F1EDDE; padding: 22px; border-radius: 4px; }
   .bo-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
@@ -53,7 +52,6 @@
   .bo-note { font-size: 10px; color: #999; margin: 6px 0 0; font-style: italic; text-align: right; }
   .bo-highlight { background: #E8F0DD; padding: 4px 6px; margin: -4px -6px; border-radius: 3px; }
 
-  /* Modal */
   .modal-backdrop { background: rgba(0,0,0,0.45); padding: 32px; display: flex; justify-content: center; border-radius: 6px; }
   .modal { background: white; width: 100%; max-width: 620px; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
   .modal-header { background: #EAE6DB; padding: 14px; text-align: center; }
@@ -62,7 +60,7 @@
   .modal-empty { text-align: center; color: #888; font-size: 13px; margin: 0 0 18px; }
 
   .previous-list { margin-bottom: 20px; }
-  .previous-row { display: grid; grid-template-columns: 1.6fr 0.8fr 0.7fr 1.2fr; gap: 10px; font-size: 12px; padding: 8px 4px; }
+  .previous-row { display: grid; grid-template-columns: 1.6fr 0.7fr 1.2fr; gap: 10px; font-size: 12px; padding: 8px 4px; }
   .previous-row.header { color: #555; font-weight: 600; padding-bottom: 8px; }
   .previous-row.first { border-top: 1px solid #E0DBCB; }
 
@@ -78,6 +76,7 @@
   }
   .form-select.required, .form-input.required { border-color: #E07856; }
   .form-input.readonly { background: #F0EDE0; color: #888; }
+  .calculated-info { margin-top: 8px; font-size: 11px; color: #555; font-style: italic; }
 
   .modal-actions { display: flex; justify-content: space-between; margin-top: 26px; }
   .btn { padding: 9px 22px; border-radius: 4px; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; font-family: inherit; }
@@ -85,7 +84,6 @@
   .btn-primary { background: #4A9CA1; color: white; border: none; }
 
   .confirmation-text { font-size: 13px; margin: 0 0 14px; line-height: 1.65; }
-  .confirmation-warning { font-size: 12px; color: #B85C3E; margin: 0; line-height: 1.55; }
 
   .error-modal { max-width: 480px; }
   .error-modal .modal-header { background: #FCEBE5; }
@@ -116,11 +114,12 @@
     <ol>
       <li><a href="#s01">01 · Bloque Pagos en estado inicial</a></li>
       <li><a href="#s02">02 · Modal sin cobros previos</a></li>
-      <li><a href="#s03">03 · Modal con "Otro" seleccionado</a></li>
-      <li><a href="#s04">04 · Modal con cobros previos</a></li>
-      <li><a href="#s05">05 · Capa de seguridad</a></li>
-      <li><a href="#s06">06 · Bloque Pagos post-cobro</a></li>
-      <li><a href="#s07">07 · Estado de cobro fallido</a></li>
+      <li><a href="#s03">03 · Modal con "Envío completo" seleccionado</a></li>
+      <li><a href="#s04">04 · Modal con "Otro" seleccionado</a></li>
+      <li><a href="#s05">05 · Modal con cobros previos</a></li>
+      <li><a href="#s06">06 · Capa de seguridad</a></li>
+      <li><a href="#s07">07 · Bloque Pagos post-cobro</a></li>
+      <li><a href="#s08">08 · Estado de cobro fallido</a></li>
     </ol>
   </div>
 
@@ -131,7 +130,7 @@
         <span class="state-num">01</span>
         <h2>Bloque Pagos en estado inicial</h2>
       </header>
-      <p class="state-notes">El campo <strong>"Cobros extra"</strong> aparece siempre en el desglose económico, con valor 0,00 € por defecto si no hay cobros adicionales. Los IDs de Stripe (cliente y pago) se mantienen como estaban. El hipervínculo <strong>"Cobro adicional"</strong> se sitúa debajo de "Reembolsos" y solo es visible para usuarios con rol Administrador.</p>
+      <p class="state-notes">El campo <strong>"Cobros adicionales"</strong> aparece siempre en el desglose económico, con valor 0,00 € por defecto. Los IDs de Stripe (cliente y pago) se mantienen como estaban. El hipervínculo <strong>"Realizar cobro adicional"</strong> se sitúa debajo de "Reembolsos" y solo es visible para usuarios con rol Administrador.</p>
       <div class="mockup">
         <div class="bo-wrapper">
           <div class="bo-block">
@@ -148,7 +147,7 @@
               <div><span class="bo-label">Descuento</span>0,00 €</div>
               <div><span class="bo-label">Transporte</span>0,00 €</div>
               <div><span class="bo-label">Envío adicional</span>0,00 €</div>
-              <div><span class="bo-label">Cobros extra</span>0,00 €</div>
+              <div><span class="bo-label">Cobros adicionales</span>0,00 €</div>
               <div><span class="bo-label">Total</span>62,90 €</div>
               <div><span class="bo-label">Total reembolsado</span>0,00 €</div>
             </div>
@@ -162,9 +161,9 @@
             </div>
             <div class="bo-links">
               <a class="bo-link">Reembolsos</a>
-              <a class="bo-link">Cobro adicional</a>
+              <a class="bo-link">Realizar cobro adicional</a>
             </div>
-            <p class="bo-note">"Cobro adicional" visible solo para rol Administrador.</p>
+            <p class="bo-note">"Realizar cobro adicional" visible solo para rol Administrador.</p>
           </div>
         </div>
       </div>
@@ -175,25 +174,25 @@
         <span class="state-num">02</span>
         <h2>Modal sin cobros previos</h2>
       </header>
-      <p class="state-notes">Al pulsar "Cobro adicional" se abre el modal. Si el pedido no tiene cobros adicionales previos, se muestra el mensaje <strong>"No hay cobros extra"</strong>. El bloque "Añadir cobro adicional" contiene tres dropdowns: <strong>Motivo de cobro</strong> (categoría padre, en MVP único valor "Gastos de envío"), <strong>Motivo</strong> (detalle específico) y <strong>Tipo de cobro</strong>.</p>
+      <p class="state-notes">Al pulsar "Realizar cobro adicional" se abre el modal. Si el pedido no tiene cobros adicionales previos, se muestra el mensaje informativo. El bloque "Nuevo cobro adicional" contiene tres dropdowns: <strong>Categoría</strong> (en MVP único valor "Gastos de envío"), <strong>Causa</strong> y <strong>Tipo de cobro</strong>.</p>
       <div class="mockup">
         <div class="modal-backdrop">
           <div class="modal">
             <div class="modal-header"><p>Cobros adicionales</p></div>
             <div class="modal-body">
-              <p class="modal-empty">No hay cobros extra</p>
+              <p class="modal-empty">Este pedido no tiene cobros adicionales registrados.</p>
               <div class="add-block">
-                <p class="add-block-title">Añadir cobro adicional</p>
+                <p class="add-block-title">Nuevo cobro adicional</p>
                 <div class="form-grid-3">
                   <div>
-                    <p class="form-field-label">Motivo de cobro</p>
+                    <p class="form-field-label">Categoría</p>
                     <select class="form-select required">
                       <option>Selecciona una opción</option>
                       <option>Gastos de envío</option>
                     </select>
                   </div>
                   <div>
-                    <p class="form-field-label">Motivo</p>
+                    <p class="form-field-label">Causa</p>
                     <select class="form-select required">
                       <option>Selecciona una opción</option>
                       <option>Ausencia en el domicilio</option>
@@ -205,9 +204,9 @@
                     <p class="form-field-label">Tipo de cobro</p>
                     <select class="form-select required">
                       <option>Selecciona una opción</option>
-                      <option>Envío estándar — 50% del pedido</option>
-                      <option>Envío con descuento — 9,90 €</option>
-                      <option>Envío trial (&lt;20 €) — 5,00 €</option>
+                      <option>Envío completo (50% del pedido)</option>
+                      <option>Envío bonificado (9,90 €)</option>
+                      <option>Envío trial (5 €)</option>
                       <option>Otro</option>
                     </select>
                   </div>
@@ -215,7 +214,7 @@
               </div>
               <div class="modal-actions">
                 <button class="btn btn-secondary">CANCELAR</button>
-                <button class="btn btn-primary">ACEPTAR</button>
+                <button class="btn btn-primary">CONTINUAR</button>
               </div>
             </div>
           </div>
@@ -226,24 +225,24 @@
     <section class="state" id="s03">
       <header class="state-header">
         <span class="state-num">03</span>
-        <h2>Modal con "Otro" seleccionado</h2>
+        <h2>Modal con "Envío completo" seleccionado</h2>
       </header>
-      <p class="state-notes">Cuando el admin selecciona <strong>"Otro"</strong> en Tipo de cobro, el grid pasa a cuatro columnas y aparece un campo <strong>Importe</strong> editable, obligatorio, que acepta valores positivos con máximo dos decimales.</p>
+      <p class="state-notes">Cuando el admin selecciona <strong>"Envío completo"</strong>, el sistema calcula automáticamente el 50% del importe total del último pedido enviado del cliente y lo muestra debajo del dropdown como información de apoyo. El agente no puede modificar este valor; si necesita un importe distinto, debe usar "Otro".</p>
       <div class="mockup">
         <div class="modal-backdrop">
           <div class="modal">
             <div class="modal-header"><p>Cobros adicionales</p></div>
             <div class="modal-body">
-              <p class="modal-empty">No hay cobros extra</p>
+              <p class="modal-empty">Este pedido no tiene cobros adicionales registrados.</p>
               <div class="add-block">
-                <p class="add-block-title">Añadir cobro adicional</p>
-                <div class="form-grid-4">
+                <p class="add-block-title">Nuevo cobro adicional</p>
+                <div class="form-grid-3">
                   <div>
-                    <p class="form-field-label">Motivo de cobro</p>
+                    <p class="form-field-label">Categoría</p>
                     <select class="form-select"><option selected>Gastos de envío</option></select>
                   </div>
                   <div>
-                    <p class="form-field-label">Motivo</p>
+                    <p class="form-field-label">Causa</p>
                     <select class="form-select">
                       <option>Ausencia en el domicilio</option>
                       <option selected>Dirección incorrecta</option>
@@ -253,21 +252,18 @@
                   <div>
                     <p class="form-field-label">Tipo de cobro</p>
                     <select class="form-select">
-                      <option>Envío estándar — 50% del pedido</option>
-                      <option>Envío con descuento — 9,90 €</option>
-                      <option>Envío trial (&lt;20 €) — 5,00 €</option>
-                      <option selected>Otro</option>
+                      <option selected>Envío completo (50% del pedido)</option>
+                      <option>Envío bonificado (9,90 €)</option>
+                      <option>Envío trial (5 €)</option>
+                      <option>Otro</option>
                     </select>
-                  </div>
-                  <div>
-                    <p class="form-field-label">Importe</p>
-                    <input class="form-input required" type="text" placeholder="0,00 €">
+                    <p class="calculated-info">Importe calculado: <strong>31,45 €</strong> (50% del último pedido enviado).</p>
                   </div>
                 </div>
               </div>
               <div class="modal-actions">
                 <button class="btn btn-secondary">CANCELAR</button>
-                <button class="btn btn-primary">ACEPTAR</button>
+                <button class="btn btn-primary">CONTINUAR</button>
               </div>
             </div>
           </div>
@@ -278,9 +274,61 @@
     <section class="state" id="s04">
       <header class="state-header">
         <span class="state-num">04</span>
+        <h2>Modal con "Otro" seleccionado</h2>
+      </header>
+      <p class="state-notes">Cuando el admin selecciona <strong>"Otro"</strong> en Tipo de cobro, el grid pasa a cuatro columnas y aparece un campo <strong>Importe (€)</strong> editable, obligatorio, que acepta valores positivos con máximo dos decimales.</p>
+      <div class="mockup">
+        <div class="modal-backdrop">
+          <div class="modal">
+            <div class="modal-header"><p>Cobros adicionales</p></div>
+            <div class="modal-body">
+              <p class="modal-empty">Este pedido no tiene cobros adicionales registrados.</p>
+              <div class="add-block">
+                <p class="add-block-title">Nuevo cobro adicional</p>
+                <div class="form-grid-4">
+                  <div>
+                    <p class="form-field-label">Categoría</p>
+                    <select class="form-select"><option selected>Gastos de envío</option></select>
+                  </div>
+                  <div>
+                    <p class="form-field-label">Causa</p>
+                    <select class="form-select">
+                      <option>Ausencia en el domicilio</option>
+                      <option selected>Dirección incorrecta</option>
+                      <option>Imposibilidad de entrega</option>
+                    </select>
+                  </div>
+                  <div>
+                    <p class="form-field-label">Tipo de cobro</p>
+                    <select class="form-select">
+                      <option>Envío completo (50% del pedido)</option>
+                      <option>Envío bonificado (9,90 €)</option>
+                      <option>Envío trial (5 €)</option>
+                      <option selected>Otro</option>
+                    </select>
+                  </div>
+                  <div>
+                    <p class="form-field-label">Importe (€)</p>
+                    <input class="form-input required" type="text" placeholder="Ej. 12,50">
+                  </div>
+                </div>
+              </div>
+              <div class="modal-actions">
+                <button class="btn btn-secondary">CANCELAR</button>
+                <button class="btn btn-primary">CONTINUAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="state" id="s05">
+      <header class="state-header">
+        <span class="state-num">05</span>
         <h2>Modal con cobros previos</h2>
       </header>
-      <p class="state-notes">Si el pedido tiene cobros adicionales exitosos previos, se listan en la parte superior del modal con las columnas: <strong>ID cobro</strong> (Payment Intent ID de Stripe), <strong>Estado</strong>, <strong>Importe</strong>, <strong>Motivo</strong>. Patrón idéntico al modal de Reembolsos del BO. Los cobros fallidos no aparecen aquí — quedan únicamente en el historial de cambios.</p>
+      <p class="state-notes">Si el pedido tiene cobros adicionales exitosos previos, se listan en la parte superior del modal con las columnas: <strong>ID de Stripe</strong>, <strong>Importe</strong> y <strong>Causa</strong>. Patrón análogo al modal de Reembolsos del BO. Los cobros fallidos no aparecen aquí — quedan únicamente en el historial de cambios.</p>
       <div class="mockup">
         <div class="modal-backdrop">
           <div class="modal">
@@ -288,36 +336,33 @@
             <div class="modal-body">
               <div class="previous-list">
                 <div class="previous-row header">
-                  <span>ID cobro</span>
-                  <span>Estado</span>
+                  <span>ID de Stripe</span>
                   <span>Importe</span>
-                  <span>Motivo</span>
+                  <span>Causa</span>
                 </div>
                 <div class="previous-row first">
                   <span class="bo-mono">pi_3StsI7LqmJbGI49X1aK2P</span>
-                  <span style="color: #555;">Cobrado</span>
                   <span>9,90 €</span>
                   <span>Dirección incorrecta</span>
                 </div>
                 <div class="previous-row">
                   <span class="bo-mono">pi_3StsI7LqmJbGI49X1bM4Q</span>
-                  <span style="color: #555;">Cobrado</span>
                   <span>12,50 €</span>
                   <span>Ausencia en el domicilio</span>
                 </div>
               </div>
               <div class="add-block">
-                <p class="add-block-title">Añadir cobro adicional</p>
+                <p class="add-block-title">Nuevo cobro adicional</p>
                 <div class="form-grid-3">
                   <div>
-                    <p class="form-field-label">Motivo de cobro</p>
+                    <p class="form-field-label">Categoría</p>
                     <select class="form-select required">
                       <option>Selecciona una opción</option>
                       <option>Gastos de envío</option>
                     </select>
                   </div>
                   <div>
-                    <p class="form-field-label">Motivo</p>
+                    <p class="form-field-label">Causa</p>
                     <select class="form-select required">
                       <option>Selecciona una opción</option>
                       <option>Ausencia en el domicilio</option>
@@ -329,9 +374,9 @@
                     <p class="form-field-label">Tipo de cobro</p>
                     <select class="form-select required">
                       <option>Selecciona una opción</option>
-                      <option>Envío estándar — 50% del pedido</option>
-                      <option>Envío con descuento — 9,90 €</option>
-                      <option>Envío trial (&lt;20 €) — 5,00 €</option>
+                      <option>Envío completo (50% del pedido)</option>
+                      <option>Envío bonificado (9,90 €)</option>
+                      <option>Envío trial (5 €)</option>
                       <option>Otro</option>
                     </select>
                   </div>
@@ -339,31 +384,7 @@
               </div>
               <div class="modal-actions">
                 <button class="btn btn-secondary">CANCELAR</button>
-                <button class="btn btn-primary">ACEPTAR</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="state" id="s05">
-      <header class="state-header">
-        <span class="state-num">05</span>
-        <h2>Capa de seguridad</h2>
-      </header>
-      <p class="state-notes">Al pulsar ACEPTAR en el modal principal, se abre un segundo modal de confirmación con el resumen del cobro. El usuario debe confirmar explícitamente para que el cargo se ejecute en Stripe. Si pulsa CANCELAR, vuelve al modal principal manteniendo los datos previamente introducidos.</p>
-      <div class="mockup">
-        <div class="modal-backdrop">
-          <div class="modal" style="max-width: 480px;">
-            <div class="modal-header"><p>Confirmar cobro adicional</p></div>
-            <div class="modal-body">
-              <p class="confirmation-text">Estás a punto de cobrar <strong>9,90 €</strong> a <strong>Test Test</strong> en concepto de <strong>gastos de envío (dirección incorrecta)</strong>.</p>
-              <p class="confirmation-text">El importe se cargará en la tarjeta guardada <span class="bo-mono">**** **** **** 4242</span>.</p>
-              <p class="confirmation-warning">Esta acción es inmediata y no se puede deshacer. Si necesitas revertirla después, deberás gestionarla desde Reembolsos.</p>
-              <div class="modal-actions">
-                <button class="btn btn-secondary">CANCELAR</button>
-                <button class="btn btn-primary">CONFIRMAR Y COBRAR</button>
+                <button class="btn btn-primary">CONTINUAR</button>
               </div>
             </div>
           </div>
@@ -374,9 +395,32 @@
     <section class="state" id="s06">
       <header class="state-header">
         <span class="state-num">06</span>
+        <h2>Capa de seguridad</h2>
+      </header>
+      <p class="state-notes">Al pulsar CONTINUAR en el modal principal, se abre un segundo modal de confirmación con el resumen del cobro. El botón final muestra el importe a cobrar para reducir errores en la confirmación. Si pulsa CANCELAR, vuelve al modal principal manteniendo los datos previamente introducidos.</p>
+      <div class="mockup">
+        <div class="modal-backdrop">
+          <div class="modal" style="max-width: 480px;">
+            <div class="modal-header"><p>Confirmar cobro adicional</p></div>
+            <div class="modal-body">
+              <p class="confirmation-text">Vas a cobrar <strong>9,90 €</strong> a <strong>Test Test</strong> por gastos de envío (dirección incorrecta).</p>
+              <p class="confirmation-text">Se cargará en la tarjeta terminada en <strong>4242</strong>.</p>
+              <div class="modal-actions">
+                <button class="btn btn-secondary">CANCELAR</button>
+                <button class="btn btn-primary">COBRAR 9,90 €</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="state" id="s07">
+      <header class="state-header">
+        <span class="state-num">07</span>
         <h2>Bloque Pagos post-cobro</h2>
       </header>
-      <p class="state-notes">Tras un cobro exitoso: el campo <strong>"Cobros extra"</strong> del desglose económico se actualiza con la suma de todos los cobros adicionales del pedido. El "Total" del pedido se recalcula incluyendo los cobros extra. Se dispara el email tipo albarán al cliente y queda registro en el historial de cambios. El detalle individual de cada cobro está disponible dentro del modal "Cobros adicionales".</p>
+      <p class="state-notes">Tras un cobro exitoso: el campo <strong>"Cobros adicionales"</strong> del desglose económico se actualiza con la suma de todos los cobros adicionales del pedido. El "Total" del pedido se recalcula incluyendo los cobros adicionales. Se dispara el email tipo albarán al cliente y queda registro en el historial de cambios. El detalle individual de cada cobro está disponible dentro del modal "Cobros adicionales".</p>
       <div class="mockup">
         <div class="bo-wrapper">
           <div class="bo-block">
@@ -393,7 +437,7 @@
               <div><span class="bo-label">Descuento</span>0,00 €</div>
               <div><span class="bo-label">Transporte</span>0,00 €</div>
               <div><span class="bo-label">Envío adicional</span>0,00 €</div>
-              <div class="bo-highlight"><span class="bo-label">Cobros extra</span><strong>9,90 €</strong></div>
+              <div class="bo-highlight"><span class="bo-label">Cobros adicionales</span><strong>9,90 €</strong></div>
               <div><span class="bo-label">Total</span>72,80 €</div>
               <div><span class="bo-label">Total reembolsado</span>0,00 €</div>
             </div>
@@ -407,30 +451,30 @@
             </div>
             <div class="bo-links">
               <a class="bo-link">Reembolsos</a>
-              <a class="bo-link">Cobro adicional</a>
+              <a class="bo-link">Realizar cobro adicional</a>
             </div>
-            <p class="bo-note">Resaltado verde en "Cobros extra" solo para indicar el cambio — en producción mantendría el estilo neutral del resto de celdas.</p>
+            <p class="bo-note">Resaltado verde en "Cobros adicionales" solo para indicar el cambio — en producción mantendría el estilo neutral del resto de celdas.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="state" id="s07">
+    <section class="state" id="s08">
       <header class="state-header">
-        <span class="state-num">07</span>
+        <span class="state-num">08</span>
         <h2>Estado de cobro fallido</h2>
       </header>
-      <p class="state-notes">Si Stripe devuelve un error (tarjeta rechazada, fondos insuficientes, autenticación requerida, etc.), se muestra al agente un modal con el motivo en lenguaje claro. El bloque Pagos no se altera, pero queda registro del intento en el historial de cambios. El agente puede reintentar o cerrar.</p>
+      <p class="state-notes">Si Stripe devuelve un error, se muestra al agente un modal con el motivo en lenguaje claro, sin códigos técnicos. El bloque Pagos no se altera, pero queda registro del intento en el historial de cambios. El agente puede volver a intentarlo o cerrar.</p>
       <div class="mockup">
         <div class="modal-backdrop">
           <div class="modal error-modal">
-            <div class="modal-header"><p>El cobro no se ha podido realizar</p></div>
+            <div class="modal-header"><p>No se ha podido completar el cobro</p></div>
             <div class="modal-body">
-              <p class="confirmation-text">Motivo devuelto por la pasarela: <strong>tarjeta rechazada (insufficient_funds)</strong>.</p>
-              <p class="confirmation-text">Comunica al cliente que necesitamos actualizar el método de pago para poder completar la operación.</p>
+              <p class="confirmation-text">La tarjeta del cliente ha sido rechazada por fondos insuficientes.</p>
+              <p class="confirmation-text">Pídele al cliente que actualice su método de pago para volver a intentarlo.</p>
               <div class="modal-actions">
                 <button class="btn btn-secondary">CERRAR</button>
-                <button class="btn btn-primary">REINTENTAR</button>
+                <button class="btn btn-primary">VOLVER A INTENTARLO</button>
               </div>
             </div>
           </div>
