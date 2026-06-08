@@ -21,6 +21,14 @@
   .page-header p { margin: 0 0 8px; color: #555; font-size: 14px; max-width: 760px; line-height: 1.65; }
   .page-header .meta { margin-top: 16px; font-size: 12px; color: #888; }
 
+  .pricing-table { margin-top: 18px; max-width: 480px; background: white; border: 1px solid #E0DBCB; border-radius: 6px; padding: 14px 18px; }
+  .pricing-table h4 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: #888; font-weight: 600; }
+  .pricing-table table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .pricing-table th, .pricing-table td { text-align: left; padding: 6px 8px; }
+  .pricing-table th { color: #888; font-weight: 600; font-size: 11px; border-bottom: 1px solid #E0DBCB; }
+  .pricing-table td { border-bottom: 1px solid #F0EDE0; }
+  .pricing-table tr:last-child td { border-bottom: none; }
+
   .toc { background: white; border: 1px solid #E0DBCB; border-radius: 6px; padding: 16px 20px; margin-bottom: 56px; }
   .toc h3 { margin: 0 0 10px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #888; font-weight: 600; }
   .toc ol { margin: 0; padding: 0; list-style: none; columns: 2; column-gap: 24px; }
@@ -97,6 +105,7 @@
     .state-notes, .mockup { padding-left: 0; }
     .bo-grid-7 { grid-template-columns: repeat(2, 1fr); }
     .form-grid-3, .form-grid-4 { grid-template-columns: 1fr; }
+    .pricing-table { max-width: 100%; }
     .modal-backdrop { padding: 16px; }
     .modal-body { padding: 18px; }
   }
@@ -116,6 +125,21 @@
     <h1>Mid-fi · Cobros adicionales en BO</h1>
     <p>Propuesta de UX/UI para añadir la funcionalidad de cobros adicionales forzados desde el bloque Pagos del BackOffice. Este documento recoge todos los estados del flujo final del MVP (motivo: Gastos de envío), construido sobre una arquitectura base reusable para incorporar progresivamente el resto de motivos del listado de ATC.</p>
     <p class="meta">Versión final · Para validación con IT</p>
+
+    <div class="pricing-table">
+      <h4>Tarifas por país</h4>
+      <table>
+        <thead>
+          <tr><th>País del cliente</th><th>Envío trial</th><th>Envío bonificado</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>España (ES)</td><td>5,00 €</td><td>9,90 €</td></tr>
+          <tr><td>Francia (FR)</td><td>10,00 €</td><td>15,00 €</td></tr>
+          <tr><td>Italia (IT)</td><td>10,00 €</td><td>15,00 €</td></tr>
+          <tr><td>Alemania (DE)</td><td>10,00 €</td><td>15,00 €</td></tr>
+        </tbody>
+      </table>
+    </div>
   </header>
 
   <div class="toc">
@@ -183,7 +207,7 @@
         <span class="state-num">02</span>
         <h2>Modal sin cobros previos</h2>
       </header>
-      <p class="state-notes">Al pulsar "Realizar cobro adicional" se abre el modal. Si el pedido no tiene cobros adicionales previos, se muestra el mensaje informativo. El bloque "Nuevo cobro adicional" contiene tres dropdowns: <strong>Categoría</strong> (en MVP único valor "Gastos de envío"), <strong>Causa</strong> y <strong>Tipo de cobro</strong>.</p>
+      <p class="state-notes">Al pulsar "Realizar cobro adicional" se abre el modal. Si el pedido no tiene cobros adicionales previos, se muestra el mensaje informativo. El bloque "Nuevo cobro adicional" contiene tres dropdowns: <strong>Categoría</strong> (en MVP único valor "Gastos de envío"), <strong>Causa</strong> y <strong>Tipo de cobro</strong>. La notación <strong>[X]</strong> en "Envío bonificado" y "Envío trial" indica que el precio se inyecta dinámicamente según el país del cliente que se está gestionando (ver tabla de tarifas en la cabecera). El agente solo ve la tarifa que aplica a su cliente, no las del resto de países.</p>
       <div class="mockup">
         <div class="modal-backdrop">
           <div class="modal">
@@ -214,8 +238,8 @@
                     <select class="form-select required">
                       <option>Selecciona una opción</option>
                       <option>Envío completo (50% del pedido)</option>
-                      <option>Envío bonificado (9,90 €)</option>
-                      <option>Envío trial (5 €)</option>
+                      <option>Envío bonificado ([X] €)</option>
+                      <option>Envío trial ([X] €)</option>
                       <option>Otro</option>
                     </select>
                   </div>
@@ -262,8 +286,8 @@
                     <p class="form-field-label">Tipo de cobro</p>
                     <select class="form-select">
                       <option selected>Envío completo (50% del pedido)</option>
-                      <option>Envío bonificado (9,90 €)</option>
-                      <option>Envío trial (5 €)</option>
+                      <option>Envío bonificado ([X] €)</option>
+                      <option>Envío trial ([X] €)</option>
                       <option>Otro</option>
                     </select>
                     <p class="calculated-info">Importe calculado: <strong>31,45 €</strong> (50% del último pedido enviado).</p>
@@ -311,8 +335,8 @@
                     <p class="form-field-label">Tipo de cobro</p>
                     <select class="form-select">
                       <option>Envío completo (50% del pedido)</option>
-                      <option>Envío bonificado (9,90 €)</option>
-                      <option>Envío trial (5 €)</option>
+                      <option>Envío bonificado ([X] €)</option>
+                      <option>Envío trial ([X] €)</option>
                       <option selected>Otro</option>
                     </select>
                   </div>
@@ -384,8 +408,8 @@
                     <select class="form-select required">
                       <option>Selecciona una opción</option>
                       <option>Envío completo (50% del pedido)</option>
-                      <option>Envío bonificado (9,90 €)</option>
-                      <option>Envío trial (5 €)</option>
+                      <option>Envío bonificado ([X] €)</option>
+                      <option>Envío trial ([X] €)</option>
                       <option>Otro</option>
                     </select>
                   </div>
