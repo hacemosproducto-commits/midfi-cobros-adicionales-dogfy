@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mid-fi · Cobros adicionales · BO Dogfy Diet</title>
+<title>Mid-fi · Reenviar pedido · BO Dogfy Diet</title>
 <style>
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
@@ -44,58 +44,42 @@
   .state-notes strong { color: #2A2A2A; }
   .mockup { padding-left: 38px; }
 
-  .bo-wrapper { background: #F5F1E8; padding: 22px; border-radius: 6px; }
-  .bo-block { background: #F1EDDE; padding: 22px; border-radius: 4px; }
-  .bo-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-  .bo-title { font-weight: 600; font-size: 15px; margin: 0; }
-  .bo-id { font-size: 12px; color: #555; font-family: 'SF Mono', Monaco, monospace; }
-  .bo-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; font-size: 13px; margin-bottom: 14px; }
-  .bo-grid-7 { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 12px; font-size: 12px; padding: 16px 0; border-top: 1px solid #E0DBCB; }
-  .bo-grid-2-bordered { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; font-size: 13px; padding: 16px 0; }
-  .bo-grid-2-bordered.bordered-top-bottom { border-top: 1px solid #E0DBCB; border-bottom: 1px solid #E0DBCB; }
-  .bo-label { color: #888; font-size: 11px; display: block; margin-bottom: 2px; }
-  .bo-mono { font-family: 'SF Mono', Monaco, monospace; font-size: 12px; }
-  .bo-links { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; margin-top: 16px; }
-  .bo-link { color: #4A9CA1; font-size: 13px; text-decoration: underline; cursor: pointer; }
-  .bo-note { font-size: 10px; color: #999; margin: 6px 0 0; font-style: italic; text-align: right; }
-  .bo-highlight { background: #E8F0DD; padding: 4px 6px; margin: -4px -6px; border-radius: 3px; }
+  .bo-card { background: #F1EDDE; padding: 18px 22px; border-radius: 4px; margin-bottom: 16px; }
+  .bo-card-title { font-weight: 600; font-size: 15px; margin: 0 0 12px; }
+  .bo-card-empty { color: #777; font-size: 13px; margin: 0 0 14px; }
+  .bo-button-pill { background: #4A9CA1; color: white; border: none; padding: 8px 16px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; font-family: inherit; }
 
   .modal-backdrop { background: rgba(0,0,0,0.45); padding: 32px; display: flex; justify-content: center; border-radius: 6px; }
-  .modal { background: white; width: 100%; max-width: 720px; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
+  .modal { background: white; width: 100%; max-width: 480px; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
   .modal-header { background: #EAE6DB; padding: 14px; text-align: center; }
   .modal-header p { font-size: 14px; font-weight: 600; margin: 0; }
-  .modal-body { padding: 24px; }
-  .modal-empty { text-align: center; color: #888; font-size: 13px; margin: 0 0 18px; }
+  .modal-body { padding: 22px 26px; }
 
-  .previous-list { margin-bottom: 20px; }
-  .previous-row { display: grid; grid-template-columns: 1.6fr 0.7fr 1.2fr; gap: 10px; font-size: 12px; padding: 8px 4px; }
-  .previous-row.header { color: #555; font-weight: 600; padding-bottom: 8px; }
-  .previous-row.first { border-top: 1px solid #E0DBCB; }
-
-  .add-block { background: #F5F1E8; padding: 22px; border-radius: 4px; }
-  .add-block-title { font-weight: 600; font-size: 14px; margin: 0 0 14px; }
-  .form-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
-  .form-grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
-  .form-field-label { font-size: 11px; color: #888; margin: 0 0 4px; }
-  .form-field-value { font-size: 14px; margin: 0; }
-  .form-select, .form-input {
-    width: 100%; min-width: 0; padding: 7px 8px; border: 1px solid #D5D2C8; border-radius: 4px;
-    font-size: 12px; background: white; font-family: inherit;
+  .form-field { margin-bottom: 16px; }
+  .form-field-label { font-size: 12px; color: #555; margin: 0 0 4px; }
+  .form-input, .form-select {
+    width: 100%; padding: 8px 10px; border: 1px solid #E07856; border-radius: 4px;
+    font-size: 13px; background: white; font-family: inherit;
   }
-  .form-select.required, .form-input.required { border-color: #E07856; }
-  .form-input.readonly { background: #F0EDE0; color: #888; }
-  .calculated-info { margin-top: 8px; font-size: 11px; color: #555; font-style: italic; }
+  .form-input.readonly, .form-select.readonly { background: #F0EDE0; color: #555; border-color: #D5D2C8; }
 
-  .modal-actions { display: flex; justify-content: space-between; margin-top: 26px; }
+  .calculated-info { margin-top: 6px; font-size: 11px; color: #4A9CA1; font-weight: 500; }
+
+  .form-section-title { font-weight: 600; font-size: 15px; margin: 18px 0 10px; }
+  .content-block { border: 1px solid #D5D2C8; border-radius: 4px; padding: 14px 16px; margin-bottom: 12px; }
+  .content-block-header { display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 13px; padding-bottom: 8px; border-bottom: 1px solid #E0DBCB; margin-bottom: 10px; }
+  .content-row { display: flex; justify-content: space-between; align-items: center; font-size: 12px; padding: 5px 0; }
+  .content-row .bolsas { color: #888; font-size: 11px; margin-left: 8px; }
+
+  .checkbox-row { display: flex; align-items: center; gap: 8px; margin: 14px 0; font-size: 13px; }
+  .checkbox-row input { accent-color: #4A9CA1; }
+
+  .modal-actions { display: flex; justify-content: space-between; margin-top: 22px; gap: 10px; }
   .btn { padding: 9px 22px; border-radius: 4px; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; font-family: inherit; }
   .btn-secondary { background: white; color: #4A9CA1; border: 1px solid #4A9CA1; }
   .btn-primary { background: #4A9CA1; color: white; border: none; }
 
   .confirmation-text { font-size: 13px; margin: 0 0 14px; line-height: 1.65; }
-
-  .error-modal { max-width: 480px; }
-  .error-modal .modal-header { background: #FCEBE5; }
-  .error-modal .modal-header p { color: #B85C3E; }
 
   .footer-note { margin-top: 80px; padding-top: 24px; border-top: 1px solid #E0DBCB; font-size: 12px; color: #888; }
 
@@ -103,17 +87,15 @@
     .container { padding: 28px 16px 56px; }
     .toc ol { columns: 1; }
     .state-notes, .mockup { padding-left: 0; }
-    .bo-grid-7 { grid-template-columns: repeat(2, 1fr); }
-    .form-grid-3, .form-grid-4 { grid-template-columns: 1fr; }
     .pricing-table { max-width: 100%; }
     .modal-backdrop { padding: 16px; }
     .modal-body { padding: 18px; }
   }
 
   @media (max-width: 420px) {
-    .bo-grid-7, .bo-grid-2, .bo-grid-2-bordered { grid-template-columns: 1fr; }
     .modal-actions { flex-direction: column; gap: 10px; }
     .btn { width: 100%; }
+    .pricing-table th, .pricing-table td { padding: 6px 5px; }
   }
 </style>
 </head>
@@ -122,21 +104,21 @@
 
   <header class="page-header">
     <p class="eyebrow">Internal apps · BackOffice · Dogfy Diet</p>
-    <h1>Mid-fi · Cobros adicionales en BO</h1>
-    <p>Propuesta de UX/UI para añadir la funcionalidad de cobros adicionales forzados desde el bloque Pagos del BackOffice. Este documento recoge todos los estados del flujo final del MVP (motivo: Gastos de envío), construido sobre una arquitectura base reusable para incorporar progresivamente el resto de motivos del listado de ATC.</p>
-    <p class="meta">Versión final · Para validación con IT</p>
+    <h1>Mid-fi · Reenviar pedido (gastos de envío)</h1>
+    <p>Propuesta de UX/UI para gestionar el reenvío de pedidos no entregados desde el BackOffice, integrando un cobro asociado vía Stripe. Esta funcionalidad reutiliza el modal existente "Crear pedido para cliente" añadiendo el motivo "Gastos de envío" con sus opciones específicas.</p>
+    <p class="meta">Versión final tras alineación con IT · Para validación</p>
 
     <div class="pricing-table">
-      <h4>Tarifas por país</h4>
+      <h4>Tarifas por país (Envío bonificado / Envío trial)</h4>
       <table>
         <thead>
-          <tr><th>País del cliente</th><th>Envío trial</th><th>Envío bonificado</th></tr>
+          <tr><th>País del cliente</th><th>Envío bonificado</th><th>Envío trial</th></tr>
         </thead>
         <tbody>
-          <tr><td>España (ES)</td><td>5,00 €</td><td>9,90 €</td></tr>
-          <tr><td>Francia (FR)</td><td>10,00 €</td><td>15,00 €</td></tr>
-          <tr><td>Italia (IT)</td><td>10,00 €</td><td>15,00 €</td></tr>
-          <tr><td>Alemania (DE)</td><td>10,00 €</td><td>15,00 €</td></tr>
+          <tr><td>España (ES)</td><td>9,90 €</td><td>5,00 €</td></tr>
+          <tr><td>Francia (FR)</td><td>15,00 €</td><td>10,00 €</td></tr>
+          <tr><td>Italia (IT)</td><td>15,00 €</td><td>10,00 €</td></tr>
+          <tr><td>Alemania (DE)</td><td>15,00 €</td><td>10,00 €</td></tr>
         </tbody>
       </table>
     </div>
@@ -145,14 +127,14 @@
   <div class="toc">
     <h3>Índice de estados</h3>
     <ol>
-      <li><a href="#s01">01 · Bloque Pagos en estado inicial</a></li>
-      <li><a href="#s02">02 · Modal sin cobros previos</a></li>
-      <li><a href="#s03">03 · Modal con "Envío completo" seleccionado</a></li>
-      <li><a href="#s04">04 · Modal con "Otro" seleccionado</a></li>
-      <li><a href="#s05">05 · Modal con cobros previos</a></li>
-      <li><a href="#s06">06 · Capa de seguridad</a></li>
-      <li><a href="#s07">07 · Bloque Pagos post-cobro</a></li>
-      <li><a href="#s08">08 · Estado de cobro fallido</a></li>
+      <li><a href="#s01">01 · Botón "Reenviar pedido" en datos del pedido</a></li>
+      <li><a href="#s02">02 · Modal inicial con fecha y contenido prerrellenados</a></li>
+      <li><a href="#s03">03 · Motivo "Gastos de envío" seleccionado</a></li>
+      <li><a href="#s04">04 · "Envío completo (50%)" con importe calculado</a></li>
+      <li><a href="#s05">05 · "Envío segunda mitad (25%)" con importe calculado</a></li>
+      <li><a href="#s06">06 · "Envío bonificado" según país del cliente</a></li>
+      <li><a href="#s07">07 · "Personalizado" con importe manual</a></li>
+      <li><a href="#s08">08 · Capa de seguridad</a></li>
     </ol>
   </div>
 
@@ -161,42 +143,22 @@
     <section class="state" id="s01">
       <header class="state-header">
         <span class="state-num">01</span>
-        <h2>Bloque Pagos en estado inicial</h2>
+        <h2>Botón "Reenviar pedido" en datos del pedido</h2>
       </header>
-      <p class="state-notes">El campo <strong>"Cobros adicionales"</strong> aparece siempre en el desglose económico, con valor 0,00 € por defecto. Los IDs de Stripe (cliente y pago) se mantienen como estaban. El hipervínculo <strong>"Realizar cobro adicional"</strong> se sitúa debajo de "Reembolsos" y solo es visible para usuarios con rol Administrador.</p>
+      <p class="state-notes">El botón <strong>"Reenviar pedido"</strong> se sitúa en la columna lateral derecha de la pantalla de datos del pedido, debajo de la sección "Incidencias con el transporte". Mismo estilo pill teal que los botones de productos adicionales. Solo es visible para roles Administrador y Team Lead, y <strong>solo cuando el pedido tiene estado "No entregado"</strong>. En el bloque Pagos se eliminan el hipervínculo "Realizar cobro adicional" y el campo "Cobros adicionales" del desglose económico, ya que el modelo conceptual pasa de "cobro" a "creación de pedido".</p>
       <div class="mockup">
-        <div class="bo-wrapper">
-          <div class="bo-block">
-            <div class="bo-row">
-              <p class="bo-title">Pagos</p>
-              <span class="bo-id">4QO0Z5KPWF</span>
-            </div>
-            <div class="bo-grid-2">
-              <div><span class="bo-label">Estado</span>Pagado</div>
-              <div><span class="bo-label">Fecha</span>26/1/2026</div>
-            </div>
-            <div class="bo-grid-7">
-              <div><span class="bo-label">Precio base</span>62,90 €</div>
-              <div><span class="bo-label">Descuento</span>0,00 €</div>
-              <div><span class="bo-label">Transporte</span>0,00 €</div>
-              <div><span class="bo-label">Envío adicional</span>0,00 €</div>
-              <div><span class="bo-label">Cobros adicionales</span>0,00 €</div>
-              <div><span class="bo-label">Total</span>62,90 €</div>
-              <div><span class="bo-label">Total reembolsado</span>0,00 €</div>
-            </div>
-            <div class="bo-grid-2-bordered">
-              <div><span class="bo-label">Forma de pago</span>Tarjeta</div>
-              <div><span class="bo-label">Dígitos tarjeta</span>**** **** **** 4242</div>
-            </div>
-            <div class="bo-grid-2-bordered bordered-top-bottom">
-              <div><span class="bo-label">ID cliente Stripe</span><span class="bo-mono">cus_RXjMKZmrIztehA</span></div>
-              <div><span class="bo-label">ID pago Stripe</span><span class="bo-mono">pi_3StsI7LqmJbGI49X1t2U0Koj</span></div>
-            </div>
-            <div class="bo-links">
-              <a class="bo-link">Reembolsos</a>
-              <a class="bo-link">Realizar cobro adicional</a>
-            </div>
-            <p class="bo-note">"Realizar cobro adicional" visible solo para rol Administrador.</p>
+        <div style="background: #F5F1E8; padding: 22px; border-radius: 6px;">
+          <div class="bo-card">
+            <p class="bo-card-title">Incidencias con el empaquetado</p>
+            <p class="bo-card-empty">Ninguna</p>
+          </div>
+          <div class="bo-card">
+            <p class="bo-card-title">Incidencias con el transporte</p>
+            <p class="bo-card-empty">Ninguna (se borrará la incidencia)</p>
+          </div>
+          <div style="text-align: left; margin-top: 4px;">
+            <button class="bo-button-pill">REENVIAR PEDIDO</button>
+            <p style="font-size: 10px; color: #999; margin: 8px 0 0; font-style: italic;">Visible solo para roles Administrador y Team Lead, y solo cuando el pedido tiene estado "No entregado".</p>
           </div>
         </div>
       </div>
@@ -205,49 +167,46 @@
     <section class="state" id="s02">
       <header class="state-header">
         <span class="state-num">02</span>
-        <h2>Modal sin cobros previos</h2>
+        <h2>Modal inicial con fecha y contenido prerrellenados</h2>
       </header>
-      <p class="state-notes">Al pulsar "Realizar cobro adicional" se abre el modal. Si el pedido no tiene cobros adicionales previos, se muestra el mensaje informativo. El bloque "Nuevo cobro adicional" contiene tres dropdowns: <strong>Categoría</strong> (en MVP único valor "Gastos de envío"), <strong>Causa</strong> y <strong>Tipo de cobro</strong>. La notación <strong>[X]</strong> en "Envío bonificado" y "Envío trial" indica que el precio se inyecta dinámicamente según el país del cliente que se está gestionando (ver tabla de tarifas en la cabecera). El agente solo ve la tarifa que aplica a su cliente, no las del resto de países.</p>
+      <p class="state-notes">Al pulsar "Reenviar pedido" se abre el modal existente <strong>"Crear pedido para cliente"</strong> con tres campos prerrellenados respecto al uso habitual: la <strong>fecha de entrega</strong> con la fecha calculada de reenvío, el <strong>contenido</strong> con el mismo del pedido no entregado (raciones, sabores, gramaje), y el <strong>motivo</strong> con "Gastos de envío" para evitar errores del agente. El resto del modal funciona exactamente igual que hoy.</p>
       <div class="mockup">
         <div class="modal-backdrop">
           <div class="modal">
-            <div class="modal-header"><p>Cobros adicionales</p></div>
+            <div class="modal-header"><p>Crear pedido para cliente</p></div>
             <div class="modal-body">
-              <p class="modal-empty">Este pedido no tiene cobros adicionales registrados.</p>
-              <div class="add-block">
-                <p class="add-block-title">Nuevo cobro adicional</p>
-                <div class="form-grid-3">
-                  <div>
-                    <p class="form-field-label">Categoría</p>
-                    <select class="form-select required">
-                      <option>Selecciona una opción</option>
-                      <option>Gastos de envío</option>
-                    </select>
-                  </div>
-                  <div>
-                    <p class="form-field-label">Causa</p>
-                    <select class="form-select required">
-                      <option>Selecciona una opción</option>
-                      <option>Ausencia en el domicilio</option>
-                      <option>Dirección incorrecta</option>
-                      <option>Imposibilidad de entrega</option>
-                    </select>
-                  </div>
-                  <div>
-                    <p class="form-field-label">Tipo de cobro</p>
-                    <select class="form-select required">
-                      <option>Selecciona una opción</option>
-                      <option>Envío completo (50% del pedido)</option>
-                      <option>Envío bonificado ([X] €)</option>
-                      <option>Envío trial ([X] €)</option>
-                      <option>Otro</option>
-                    </select>
-                  </div>
-                </div>
+              <div class="form-field">
+                <p class="form-field-label">Fecha de entrega</p>
+                <input class="form-input" type="text" value="2026-06-24">
               </div>
+              <div class="form-field">
+                <p class="form-field-label">Motivo</p>
+                <select class="form-select"><option selected>Gastos de envío</option></select>
+              </div>
+
+              <p class="form-section-title">Contenido</p>
+              <p style="font-size: 13px; color: #4A9CA1; margin: 0 0 10px;">Añadir bloque +</p>
+              <div class="content-block">
+                <div class="content-block-header">
+                  <span>Ración</span>
+                  <span style="font-weight: 400; font-size: 12px;">100 g ▾</span>
+                </div>
+                <div class="content-row"><span>Pollo</span><span>8 <span class="bolsas">(8 bolsas)</span></span></div>
+                <div class="content-row"><span>Pavo</span><span>8 <span class="bolsas">(8 bolsas)</span></span></div>
+                <div class="content-row"><span>Buey</span><span>6 <span class="bolsas">(6 bolsas)</span></span></div>
+                <div class="content-row"><span>Salmón</span><span>6 <span class="bolsas">(6 bolsas)</span></span></div>
+              </div>
+
+              <button class="bo-button-pill" style="margin-top: 6px;">AÑADIR EXTRAS</button>
+
+              <div class="checkbox-row">
+                <input type="checkbox">
+                <span>Generar cobro Stripe</span>
+              </div>
+
               <div class="modal-actions">
                 <button class="btn btn-secondary">CANCELAR</button>
-                <button class="btn btn-primary">CONTINUAR</button>
+                <button class="btn btn-primary" style="opacity: 0.5;">ACEPTAR</button>
               </div>
             </div>
           </div>
@@ -258,45 +217,54 @@
     <section class="state" id="s03">
       <header class="state-header">
         <span class="state-num">03</span>
-        <h2>Modal con "Envío completo" seleccionado</h2>
+        <h2>Motivo "Gastos de envío" seleccionado</h2>
       </header>
-      <p class="state-notes">Cuando el admin selecciona <strong>"Envío completo"</strong>, el sistema calcula automáticamente el 50% del importe total del último pedido enviado del cliente y lo muestra debajo del dropdown como información de apoyo. El agente no puede modificar este valor; si necesita un importe distinto, debe usar "Otro".</p>
+      <p class="state-notes">Al seleccionar <strong>"Gastos de envío"</strong> en Motivo, se despliegan automáticamente dos elementos nuevos: un campo <strong>"Causa"</strong> con tres opciones, y un bloque con las opciones de <strong>"Tipo de cobro"</strong>. Además, el checkbox <strong>"Generar cobro Stripe" queda marcado por defecto</strong> (el agente puede desmarcarlo si excepcionalmente quiere crear el pedido sin cobro asociado).</p>
       <div class="mockup">
         <div class="modal-backdrop">
           <div class="modal">
-            <div class="modal-header"><p>Cobros adicionales</p></div>
+            <div class="modal-header"><p>Crear pedido para cliente</p></div>
             <div class="modal-body">
-              <p class="modal-empty">Este pedido no tiene cobros adicionales registrados.</p>
-              <div class="add-block">
-                <p class="add-block-title">Nuevo cobro adicional</p>
-                <div class="form-grid-3">
-                  <div>
-                    <p class="form-field-label">Categoría</p>
-                    <select class="form-select"><option selected>Gastos de envío</option></select>
-                  </div>
-                  <div>
-                    <p class="form-field-label">Causa</p>
-                    <select class="form-select">
-                      <option>Ausencia en el domicilio</option>
-                      <option selected>Dirección incorrecta</option>
-                      <option>Imposibilidad de entrega</option>
-                    </select>
-                  </div>
-                  <div>
-                    <p class="form-field-label">Tipo de cobro</p>
-                    <select class="form-select">
-                      <option selected>Envío completo (50% del pedido)</option>
-                      <option>Envío bonificado ([X] €)</option>
-                      <option>Envío trial ([X] €)</option>
-                      <option>Otro</option>
-                    </select>
-                    <p class="calculated-info">Importe calculado: <strong>31,45 €</strong> (50% del último pedido enviado).</p>
-                  </div>
-                </div>
+              <div class="form-field">
+                <p class="form-field-label">Fecha de entrega</p>
+                <input class="form-input readonly" type="text" value="2026-06-24" readonly>
               </div>
+              <div class="form-field">
+                <p class="form-field-label">Motivo</p>
+                <select class="form-select"><option selected>Gastos de envío</option></select>
+              </div>
+              <div class="form-field">
+                <p class="form-field-label">Causa</p>
+                <select class="form-select">
+                  <option>Selecciona una opción</option>
+                  <option>Ausencia en el domicilio</option>
+                  <option>Dirección incorrecta</option>
+                  <option>Imposibilidad de entrega</option>
+                </select>
+              </div>
+
+              <p style="font-size: 12px; color: #777; font-style: italic; margin: 0 0 12px;">[Contenido del pedido prerrellenado — colapsado en este mockup por claridad]</p>
+
+              <div class="checkbox-row">
+                <input type="checkbox" checked>
+                <span><strong>Generar cobro Stripe</strong></span>
+              </div>
+
+              <div class="form-field">
+                <p class="form-field-label">Tipo de cobro</p>
+                <select class="form-select">
+                  <option>Selecciona una opción</option>
+                  <option>Envío completo (50% del pedido)</option>
+                  <option>Envío bonificado ([X] €)</option>
+                  <option>Envío trial ([X] €)</option>
+                  <option>Personalizado</option>
+                </select>
+                <p style="font-size: 11px; color: #777; font-style: italic; margin: 6px 0 0;">El sistema muestra "Envío completo (50%)" o "Envío segunda mitad (25%)" según el cliente tenga uno o dos envíos por ciclo. En este ejemplo, cliente con un envío por ciclo.</p>
+              </div>
+
               <div class="modal-actions">
                 <button class="btn btn-secondary">CANCELAR</button>
-                <button class="btn btn-primary">CONTINUAR</button>
+                <button class="btn btn-primary" style="opacity: 0.5;">ACEPTAR</button>
               </div>
             </div>
           </div>
@@ -307,48 +275,37 @@
     <section class="state" id="s04">
       <header class="state-header">
         <span class="state-num">04</span>
-        <h2>Modal con "Otro" seleccionado</h2>
+        <h2>"Envío completo (50%)" con importe calculado</h2>
       </header>
-      <p class="state-notes">Cuando el admin selecciona <strong>"Otro"</strong> en Tipo de cobro, el grid pasa a cuatro columnas y aparece un campo <strong>Importe (€)</strong> editable, obligatorio, que acepta valores positivos con máximo dos decimales.</p>
+      <p class="state-notes">Cuando el agente selecciona <strong>"Envío completo"</strong>, el sistema calcula automáticamente el 50% del precio total del pedido base (el que está en estado "No entregado") y lo muestra en una línea de apoyo debajo del dropdown. Importante: este importe es <strong>informativo para que el agente lo comunique al cliente por teléfono</strong>; el cargo Stripe se ejecutará en la fecha de cobro estándar del nuevo pedido (3-4 días antes de la entrega, según país), no en el momento.</p>
       <div class="mockup">
         <div class="modal-backdrop">
           <div class="modal">
-            <div class="modal-header"><p>Cobros adicionales</p></div>
+            <div class="modal-header"><p>Crear pedido para cliente</p></div>
             <div class="modal-body">
-              <p class="modal-empty">Este pedido no tiene cobros adicionales registrados.</p>
-              <div class="add-block">
-                <p class="add-block-title">Nuevo cobro adicional</p>
-                <div class="form-grid-4">
-                  <div>
-                    <p class="form-field-label">Categoría</p>
-                    <select class="form-select"><option selected>Gastos de envío</option></select>
-                  </div>
-                  <div>
-                    <p class="form-field-label">Causa</p>
-                    <select class="form-select">
-                      <option>Ausencia en el domicilio</option>
-                      <option selected>Dirección incorrecta</option>
-                      <option>Imposibilidad de entrega</option>
-                    </select>
-                  </div>
-                  <div>
-                    <p class="form-field-label">Tipo de cobro</p>
-                    <select class="form-select">
-                      <option>Envío completo (50% del pedido)</option>
-                      <option>Envío bonificado ([X] €)</option>
-                      <option>Envío trial ([X] €)</option>
-                      <option selected>Otro</option>
-                    </select>
-                  </div>
-                  <div>
-                    <p class="form-field-label">Importe (€)</p>
-                    <input class="form-input required" type="text" placeholder="Ej. 12,50">
-                  </div>
-                </div>
+              <div class="form-field">
+                <p class="form-field-label">Motivo</p>
+                <select class="form-select"><option selected>Gastos de envío</option></select>
               </div>
+              <div class="form-field">
+                <p class="form-field-label">Causa</p>
+                <select class="form-select"><option selected>Dirección incorrecta</option></select>
+              </div>
+
+              <div class="checkbox-row">
+                <input type="checkbox" checked>
+                <span><strong>Generar cobro Stripe</strong></span>
+              </div>
+
+              <div class="form-field">
+                <p class="form-field-label">Tipo de cobro</p>
+                <select class="form-select"><option selected>Envío completo (50% del pedido)</option></select>
+                <p class="calculated-info">Importe a cobrar: <strong>54,86 €</strong></p>
+              </div>
+
               <div class="modal-actions">
                 <button class="btn btn-secondary">CANCELAR</button>
-                <button class="btn btn-primary">CONTINUAR</button>
+                <button class="btn btn-primary">ACEPTAR</button>
               </div>
             </div>
           </div>
@@ -359,65 +316,37 @@
     <section class="state" id="s05">
       <header class="state-header">
         <span class="state-num">05</span>
-        <h2>Modal con cobros previos</h2>
+        <h2>"Envío segunda mitad (25%)" con importe calculado</h2>
       </header>
-      <p class="state-notes">Si el pedido tiene cobros adicionales exitosos previos, se listan en la parte superior del modal con las columnas: <strong>ID de Stripe</strong>, <strong>Importe</strong> y <strong>Causa</strong>. Patrón análogo al modal de Reembolsos del BO. Los cobros fallidos no aparecen aquí — quedan únicamente en el historial de cambios.</p>
+      <p class="state-notes">Aplica al caso de clientes con <strong>dos envíos por ciclo</strong>, cuando la incidencia solo afecta a la segunda mitad. En ese escenario el cliente sí recibió la primera parte, por lo que no tiene sentido cobrar el 50% completo. Se cobra el <strong>25% del pedido base</strong>. El sistema detecta automáticamente cuántos envíos por ciclo tiene el cliente: si tiene uno, solo verá "Envío completo (50%)"; si tiene dos, solo verá "Envío segunda mitad (25%)".</p>
       <div class="mockup">
         <div class="modal-backdrop">
           <div class="modal">
-            <div class="modal-header"><p>Cobros adicionales</p></div>
+            <div class="modal-header"><p>Crear pedido para cliente</p></div>
             <div class="modal-body">
-              <div class="previous-list">
-                <div class="previous-row header">
-                  <span>ID de Stripe</span>
-                  <span>Importe</span>
-                  <span>Causa</span>
-                </div>
-                <div class="previous-row first">
-                  <span class="bo-mono">pi_3StsI7LqmJbGI49X1aK2P</span>
-                  <span>9,90 €</span>
-                  <span>Dirección incorrecta</span>
-                </div>
-                <div class="previous-row">
-                  <span class="bo-mono">pi_3StsI7LqmJbGI49X1bM4Q</span>
-                  <span>12,50 €</span>
-                  <span>Ausencia en el domicilio</span>
-                </div>
+              <div class="form-field">
+                <p class="form-field-label">Motivo</p>
+                <select class="form-select"><option selected>Gastos de envío</option></select>
               </div>
-              <div class="add-block">
-                <p class="add-block-title">Nuevo cobro adicional</p>
-                <div class="form-grid-3">
-                  <div>
-                    <p class="form-field-label">Categoría</p>
-                    <select class="form-select required">
-                      <option>Selecciona una opción</option>
-                      <option>Gastos de envío</option>
-                    </select>
-                  </div>
-                  <div>
-                    <p class="form-field-label">Causa</p>
-                    <select class="form-select required">
-                      <option>Selecciona una opción</option>
-                      <option>Ausencia en el domicilio</option>
-                      <option>Dirección incorrecta</option>
-                      <option>Imposibilidad de entrega</option>
-                    </select>
-                  </div>
-                  <div>
-                    <p class="form-field-label">Tipo de cobro</p>
-                    <select class="form-select required">
-                      <option>Selecciona una opción</option>
-                      <option>Envío completo (50% del pedido)</option>
-                      <option>Envío bonificado ([X] €)</option>
-                      <option>Envío trial ([X] €)</option>
-                      <option>Otro</option>
-                    </select>
-                  </div>
-                </div>
+              <div class="form-field">
+                <p class="form-field-label">Causa</p>
+                <select class="form-select"><option selected>Imposibilidad de entrega</option></select>
               </div>
+
+              <div class="checkbox-row">
+                <input type="checkbox" checked>
+                <span><strong>Generar cobro Stripe</strong></span>
+              </div>
+
+              <div class="form-field">
+                <p class="form-field-label">Tipo de cobro</p>
+                <select class="form-select"><option selected>Envío segunda mitad (25% del pedido)</option></select>
+                <p class="calculated-info">Importe a cobrar: <strong>27,43 €</strong></p>
+              </div>
+
               <div class="modal-actions">
                 <button class="btn btn-secondary">CANCELAR</button>
-                <button class="btn btn-primary">CONTINUAR</button>
+                <button class="btn btn-primary">ACEPTAR</button>
               </div>
             </div>
           </div>
@@ -428,19 +357,36 @@
     <section class="state" id="s06">
       <header class="state-header">
         <span class="state-num">06</span>
-        <h2>Capa de seguridad</h2>
+        <h2>"Envío bonificado" según país del cliente</h2>
       </header>
-      <p class="state-notes">Al pulsar CONTINUAR en el modal principal, se abre un segundo modal de confirmación con el resumen del cobro. El botón final muestra el importe a cobrar para reducir errores en la confirmación. Si pulsa CANCELAR, vuelve al modal principal manteniendo los datos previamente introducidos.</p>
+      <p class="state-notes">Las opciones <strong>"Envío bonificado"</strong> y <strong>"Envío trial"</strong> muestran en el propio dropdown la tarifa que aplica al cliente según su país (ver tabla en la cabecera). En este ejemplo, cliente de Alemania (15,00 €). Como el importe ya queda visible en el propio dropdown, no se renderiza la línea informativa de "Importe a cobrar" que sí aparece en las opciones porcentuales. El agente solo ve la tarifa de su cliente, nunca las del resto de países.</p>
       <div class="mockup">
         <div class="modal-backdrop">
-          <div class="modal" style="max-width: 480px;">
-            <div class="modal-header"><p>Confirmar cobro adicional</p></div>
+          <div class="modal">
+            <div class="modal-header"><p>Crear pedido para cliente</p></div>
             <div class="modal-body">
-              <p class="confirmation-text">Vas a cobrar <strong>9,90 €</strong> a <strong>Test Test</strong> por gastos de envío (dirección incorrecta).</p>
-              <p class="confirmation-text">Se cargará en la tarjeta terminada en <strong>4242</strong>.</p>
+              <div class="form-field">
+                <p class="form-field-label">Motivo</p>
+                <select class="form-select"><option selected>Gastos de envío</option></select>
+              </div>
+              <div class="form-field">
+                <p class="form-field-label">Causa</p>
+                <select class="form-select"><option selected>Ausencia en el domicilio</option></select>
+              </div>
+
+              <div class="checkbox-row">
+                <input type="checkbox" checked>
+                <span><strong>Generar cobro Stripe</strong></span>
+              </div>
+
+              <div class="form-field">
+                <p class="form-field-label">Tipo de cobro</p>
+                <select class="form-select"><option selected>Envío bonificado (15,00 €)</option></select>
+              </div>
+
               <div class="modal-actions">
                 <button class="btn btn-secondary">CANCELAR</button>
-                <button class="btn btn-primary">COBRAR 9,90 €</button>
+                <button class="btn btn-primary">ACEPTAR</button>
               </div>
             </div>
           </div>
@@ -451,42 +397,42 @@
     <section class="state" id="s07">
       <header class="state-header">
         <span class="state-num">07</span>
-        <h2>Bloque Pagos post-cobro</h2>
+        <h2>"Personalizado" con importe manual</h2>
       </header>
-      <p class="state-notes">Tras un cobro exitoso: el campo <strong>"Cobros adicionales"</strong> del desglose económico se actualiza con la suma de todos los cobros adicionales del pedido. El "Total" del pedido se recalcula incluyendo los cobros adicionales. Se dispara el email tipo albarán al cliente y queda registro en el historial de cambios. El detalle individual de cada cobro está disponible dentro del modal "Cobros adicionales".</p>
+      <p class="state-notes">Cuando el agente selecciona <strong>"Personalizado"</strong>, aparece un campo <strong>"Importe"</strong> de texto libre donde introduce manualmente el valor a cobrar. Solo acepta valores positivos con máximo dos decimales. Sustituye al anterior "Otro" para alinearse con la terminología consensuada con IT.</p>
       <div class="mockup">
-        <div class="bo-wrapper">
-          <div class="bo-block">
-            <div class="bo-row">
-              <p class="bo-title">Pagos</p>
-              <span class="bo-id">4QO0Z5KPWF</span>
+        <div class="modal-backdrop">
+          <div class="modal">
+            <div class="modal-header"><p>Crear pedido para cliente</p></div>
+            <div class="modal-body">
+              <div class="form-field">
+                <p class="form-field-label">Motivo</p>
+                <select class="form-select"><option selected>Gastos de envío</option></select>
+              </div>
+              <div class="form-field">
+                <p class="form-field-label">Causa</p>
+                <select class="form-select"><option selected>Dirección incorrecta</option></select>
+              </div>
+
+              <div class="checkbox-row">
+                <input type="checkbox" checked>
+                <span><strong>Generar cobro Stripe</strong></span>
+              </div>
+
+              <div class="form-field">
+                <p class="form-field-label">Tipo de cobro</p>
+                <select class="form-select"><option selected>Personalizado</option></select>
+              </div>
+              <div class="form-field">
+                <p class="form-field-label">Importe (€)</p>
+                <input class="form-input" type="text" placeholder="Ej. 12,50">
+              </div>
+
+              <div class="modal-actions">
+                <button class="btn btn-secondary">CANCELAR</button>
+                <button class="btn btn-primary">ACEPTAR</button>
+              </div>
             </div>
-            <div class="bo-grid-2">
-              <div><span class="bo-label">Estado</span>Pagado</div>
-              <div><span class="bo-label">Fecha</span>26/1/2026</div>
-            </div>
-            <div class="bo-grid-7">
-              <div><span class="bo-label">Precio base</span>62,90 €</div>
-              <div><span class="bo-label">Descuento</span>0,00 €</div>
-              <div><span class="bo-label">Transporte</span>0,00 €</div>
-              <div><span class="bo-label">Envío adicional</span>0,00 €</div>
-              <div class="bo-highlight"><span class="bo-label">Cobros adicionales</span><strong>9,90 €</strong></div>
-              <div><span class="bo-label">Total</span>72,80 €</div>
-              <div><span class="bo-label">Total reembolsado</span>0,00 €</div>
-            </div>
-            <div class="bo-grid-2-bordered">
-              <div><span class="bo-label">Forma de pago</span>Tarjeta</div>
-              <div><span class="bo-label">Dígitos tarjeta</span>**** **** **** 4242</div>
-            </div>
-            <div class="bo-grid-2-bordered bordered-top-bottom">
-              <div><span class="bo-label">ID cliente Stripe</span><span class="bo-mono">cus_RXjMKZmrIztehA</span></div>
-              <div><span class="bo-label">ID pago Stripe</span><span class="bo-mono">pi_3StsI7LqmJbGI49X1t2U0Koj</span></div>
-            </div>
-            <div class="bo-links">
-              <a class="bo-link">Reembolsos</a>
-              <a class="bo-link">Realizar cobro adicional</a>
-            </div>
-            <p class="bo-note">Resaltado verde en "Cobros adicionales" solo para indicar el cambio — en producción mantendría el estilo neutral del resto de celdas.</p>
           </div>
         </div>
       </div>
@@ -495,19 +441,19 @@
     <section class="state" id="s08">
       <header class="state-header">
         <span class="state-num">08</span>
-        <h2>Estado de cobro fallido</h2>
+        <h2>Capa de seguridad</h2>
       </header>
-      <p class="state-notes">Si Stripe devuelve un error, se muestra al agente un modal con el motivo en lenguaje claro, sin códigos técnicos. El bloque Pagos no se altera, pero queda registro del intento en el historial de cambios. El agente puede volver a intentarlo o cerrar.</p>
+      <p class="state-notes">Al pulsar ACEPTAR se abre la capa de confirmación con el resumen de la operación. El copy refleja que se está creando un pedido nuevo con un cobro asociado, no un cobro inmediato. No se menciona la tarjeta porque el cargo no es in-situ (se ejecutará en la fecha de cobro estándar del pedido). El botón final muestra "CREAR PEDIDO" en lugar de un importe, porque la acción crítica es crear el pedido.</p>
       <div class="mockup">
         <div class="modal-backdrop">
-          <div class="modal error-modal">
-            <div class="modal-header"><p>No se ha podido completar el cobro</p></div>
+          <div class="modal">
+            <div class="modal-header"><p>Confirmar reenvío</p></div>
             <div class="modal-body">
-              <p class="confirmation-text">La tarjeta del cliente ha sido rechazada por fondos insuficientes.</p>
-              <p class="confirmation-text">Pídele al cliente que actualice su método de pago para volver a intentarlo.</p>
+              <p class="confirmation-text">Vas a crear un nuevo pedido para <strong>Maria Decker</strong> con un cobro asociado de <strong>54,86 €</strong> por gastos de envío (dirección incorrecta).</p>
+              <p class="confirmation-text">El cobro se ejecutará en la fecha de cobro estándar del nuevo pedido.</p>
               <div class="modal-actions">
-                <button class="btn btn-secondary">CERRAR</button>
-                <button class="btn btn-primary">VOLVER A INTENTARLO</button>
+                <button class="btn btn-secondary">CANCELAR</button>
+                <button class="btn btn-primary">CREAR PEDIDO</button>
               </div>
             </div>
           </div>
